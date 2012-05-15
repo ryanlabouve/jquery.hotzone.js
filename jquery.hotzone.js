@@ -32,10 +32,8 @@
 				var event_coord = { x: e.offsetX, y: e.offsetY };
 				
 				$.each(self.options.hotSpots, function(key, val){
-					if( self._is_in_range(val, event_coord)) {
-						if( val.flag() ) {
-							val.callback();
-						}
+					if( val.flag() && self._is_in_range(val, event_coord) ) {
+						val.callback();
 					}
 				});
 			});
