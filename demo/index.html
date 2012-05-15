@@ -47,7 +47,9 @@
 		<p>The various sections have been mapped off with different hotspots.</p>
 	</div>
 	<div id="grid_message">
-		<li>No Message Yet</li>
+    <ul>
+      <li>No Message Yet</li>
+    </ul>
 	</div>
 	<div style="clear:both;"></div>
 	<img src="dangergrid.png" alt="A Grid Full of Danger" />
@@ -56,5 +58,49 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
 <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.8.18/jquery-ui.min.js"></script>
 <script src="../jquery.hotzone.js"></script>
+<script>
+	var dangergrid = $("img").hotzone({
+		"eventNamespace": "dangergrid",
+		"originalHeight": 300,
+		"originalWidth": 500
+	});
+  var $list = $("#grid_message").find("ul");
+  var addMessage = function(msg) {
+    $list.prepend($("<li></li>").text(msg));
+  };
+	dangergrid.hotzone("newHotSpot", {
+    name: "pink",
+    a: { 'x': 0, 'y': 0 },
+    b: { 'x': 50, 'y': 50 },
+    callback: function() {
+      addMessage("pink");
+    }
+  });
+
+  dangergrid.hotzone("newHotSpot", {
+    name: "orange",
+    a: { 'x': 350, 'y': 0 },
+    b: { 'x': 500, 'y': 300 },
+    callback: function() {
+      addMessage("orange");
+    }
+  });
+  dangergrid.hotzone("newHotSpot", {
+    name: "green",
+    a: { 'x': 150, 'y': 0 },
+    b: { 'x': 200, 'y': 100 },
+    callback: function() {
+      addMessage("green");
+    }
+  });
+  dangergrid.hotzone("newHotSpot", {
+    name: "blue",
+    a: { 'x': 0, 'y': 200 },
+    b: { 'x': 100, 'y': 300 },
+    callback: function() {
+      addMessage("blue");
+    }
+  });
+</script>
 </body>
 </html>
