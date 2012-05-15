@@ -12,4 +12,4 @@ Brought to you by [Ryan LaBouve](http://ryanlabouve.com)
 
 ## TODOS
 
-- Add pub/sub
+- Add pub/sub with namespace using namespacing of "eventNamespace/hotSpotName"

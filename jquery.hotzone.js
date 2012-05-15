@@ -33,7 +33,9 @@
 				
 				$.each(self.options.hotSpots, function(key, val){
 					if( self._is_in_range(val, event_coord)) {
-						val.callback();
+						if( val.flag() ) {
+							val.callback();
+						}
 					}
 				});
 			});
@@ -50,7 +52,8 @@
 				y1: hs.a.y,
 				x2: hs.b.x,
 				y2: hs.b.y,
-				callback: hs.callback
+				callback: hs.callback,
+				flag: hs.flag || function() { return true; }
 			});
 		},
 		_is_in_range: function(hotspot, event_coord) {
